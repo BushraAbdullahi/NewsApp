@@ -18,21 +18,8 @@ WHERE
     bd:serviceParam wikibase:language "en" .
   }
 }
-ORDER BY DESC(?population) LIMIT 5000"""
+ORDER BY DESC(?population) LIMIT 10000"""
 
-citiesquery2 = """#Largest cities of the world
-#defaultView:BubbleChart
-SELECT DISTINCT ?cityLabel ?population ?gps
-WHERE
-{
-  ?city wdt:P31/wdt:P279* wd:Q515 .
-  ?city wdt:P1082 ?population .
-  ?city wdt:P625 ?gps .
-  SERVICE wikibase:label {
-    bd:serviceParam wikibase:language "en" .
-  }
-}
-ORDER BY DESC(?population) LIMIT 20"""
 
 def splitGps(value):
   value = value.replace("Point(","").replace(")","")
